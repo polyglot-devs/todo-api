@@ -8,7 +8,7 @@ public class WelcomeController {
 
     @GetMapping
     public ResponseEntity<String> welcome() {
-        return ResponseEntity.ok("Welcome, kocak!");
+        return ResponseEntity.ok("Welcome, kocak!!");
     }
 
 }
