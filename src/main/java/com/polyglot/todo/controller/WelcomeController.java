@@ -4,8 +4,7 @@ import com.polyglot.todo.model.Book;
 import com.polyglot.todo.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +20,12 @@ public class WelcomeController {
 
     @GetMapping("/book")
     public ResponseEntity<List<Book>> books() {
+        return ResponseEntity.ok(bookRepository.findAll());
+    }
+
+    @GetMapping("/book/{name}/{description}")
+    public ResponseEntity<List<Book>> addBook(@PathVariable String name, @PathVariable String description) {
+        bookRepository.save(Book.of(name, description));
         return ResponseEntity.ok(bookRepository.findAll());
     }
 
